@@ -28,8 +28,11 @@ export class TodoListComponent implements OnInit {
     });
   }
 
-  toggle(id: number) {
-
+  toggle(id: number): void {
+    this.todoService.toggleTodo(id).subscribe({
+      next: () => this.loadTodos(),
+      error: (err) => console.error('Error changing checked', err)
+    });
   }
 
   delete(id: number) {
