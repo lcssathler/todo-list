@@ -33,4 +33,14 @@ router.post('/', async (req, res) => {
   }
 });
 
+router.put('/:id/toggle', async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    const todo = await todoService.toggleComplete(id);
+    res.json(todo);
+  } catch (error: any) {
+    res.status(404).json({ error: error.message });
+  }
+});   
+
 export default router

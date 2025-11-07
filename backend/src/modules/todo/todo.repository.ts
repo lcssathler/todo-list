@@ -18,4 +18,13 @@ export class TodoRepository {
   async create(data: Omit<Todo, 'id' | 'createdAt'>): Promise<Todo> {
     return prisma.todo.create({ data });
   }
+
+  async update(id: number, data: Partial<Todo>): Promise<Todo | null> {
+    return prisma.todo.update({
+      where: { id },
+      data,
+    }).catch(() => console.log('Update failed'));
+  }
 }
+
+

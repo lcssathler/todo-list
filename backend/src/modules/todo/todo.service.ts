@@ -20,4 +20,10 @@ export class TodoService {
       completed: false,
     });
   }
+
+  async toggleComplete(id: number): Promise<Todo> {
+    const todo = await this.repository.findById(id);
+    if (!todo) throw new Error('To Do not found');
+    return this.repository.update(id, { completed: !todo.completed }) as Promise<Todo>;
+  }
 }
