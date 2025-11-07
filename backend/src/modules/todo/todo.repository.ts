@@ -3,7 +3,10 @@ import { Todo } from "../../types/index.ts";
 export class TodoRepository {
 
   async findAll(): Promise<Todo[]> {
-    return prisma.todo.findMany();
+    return prisma.todo.findMany({
+      take: 100,
+    });
+    
   }
 
   async findById(id: number): Promise<Todo | null> {
