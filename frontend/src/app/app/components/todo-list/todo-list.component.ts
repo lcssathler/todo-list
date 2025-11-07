@@ -36,6 +36,9 @@ export class TodoListComponent implements OnInit {
   }
 
   delete(id: number) {
-
+    this.todoService.deleteTodo(id).subscribe({
+      next: () => this.loadTodos(),
+      error: (err) => console.error('Error deleting To Do', err)
+    });
   }
 }
