@@ -4,11 +4,12 @@ import { Todo } from '../../models/todo.model';
 import { TodoService } from '../../services/todo.service';
 import { CommonModule, NgFor } from '@angular/common';
 import { TodoFormComponent } from "../todo-form/todo-form.component";
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-todo-list',
   standalone: true,
-  imports: [TodoFormComponent, CommonModule, NgFor],
+  imports: [TodoFormComponent, CommonModule, NgFor, MatIconModule],
   templateUrl: './todo-list.component.html',
   styleUrl: './todo-list.component.css'
 })

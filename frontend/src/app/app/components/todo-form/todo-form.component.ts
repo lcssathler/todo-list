@@ -1,10 +1,11 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { TodoService } from '../../services/todo.service';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-todo-form',
-  imports: [FormsModule],
+  imports: [FormsModule, MatIconModule],
   templateUrl: './todo-form.component.html',
   styleUrl: './todo-form.component.css'
 })
