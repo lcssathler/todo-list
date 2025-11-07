@@ -54,4 +54,14 @@ router.put('/:id', async (req, res) => {
   }
 });
 
+router.delete('/:id', async (req, res) => {
+  try {
+    const id = parseInt(req.params.id);
+    await todoService.delete(id);
+    res.status(204).send();
+  } catch (error: any) {
+    res.status(404).json({ error: error.message });
+  }
+});
+
 export default router

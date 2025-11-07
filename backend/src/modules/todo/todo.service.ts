@@ -28,6 +28,13 @@ export class TodoService {
   }
 
   async update(id: number, data: Partial<Todo>): Promise<Todo | null> {
+    const todo = await this.repository.findById(id);
+    if (!todo) throw new Error('To Do not found');
     return this.repository.update(id, data);
+  }
+  
+  async delete(id: number): Promise<void> {
+    const deleted = await this.repository.delete(id);
+    if (!deleted) throw new Error('To Do not found');
   }
 }
