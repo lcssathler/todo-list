@@ -1,6 +1,5 @@
 import { prisma } from "../../database/prisma.config.ts";
-import { Todo } from "./todo.model.ts";
-
+import { Todo } from "../../types/index.ts";
 export class TodoRepository {
 
   async findAll(): Promise<Todo[]> {
@@ -12,5 +11,8 @@ export class TodoRepository {
         where: { id } 
     });
   }
-  
+
+  async create(data: Omit<Todo, 'id' | 'createdAt'>): Promise<Todo> {
+    return prisma.todo.create({ data });
+  }
 }

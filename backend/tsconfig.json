@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+
     "target": "ES2022",
-    "module": "CommonJS",
+    "module": "nodenext",
     "lib": ["ES2022", "DOM"],
     "types": ["node"],
 
@@ -11,8 +12,8 @@
     "allowSyntheticDefaultImports": true,
     "allowImportingTsExtensions": true,
     "noEmit": true,
-    "resolveJsonModule": true,
-    "moduleResolution": "node",
+    "resolveJsonModule": true,  
+    "moduleResolution": "nodenext",
 
     "strict": true,
     "noImplicitAny": true,
@@ -28,11 +29,13 @@
     "emitDecoratorMetadata": true,
   },
   "ts-node": {
-    "esm": false, 
+    "esm": true, 
+    "transpileOnly": true
   },
   "include": [
     "src/**/*.ts",
-    "test-db.ts"
+    "test-db.ts",
+    "prisma/**/*.ts"
   ],
   "exclude": [
     "node_modules",

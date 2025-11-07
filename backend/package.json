@@ -6,9 +6,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.ts",
-    "start": "ts-node src/server.ts",
-    "test:db": "ts-node test-db.ts",
+    "dev": "nodemon --watch src --exec \"node --loader ts-node/esm\" src/server.ts",
+    "start": "node --loader ts-node/esm src/server.ts",
+    "test:db": "node --loader ts-node/esm test-db.ts",
+    "build": "tsc",
     "prisma:generate": "prisma generate",
     "prisma:push": "prisma db push"
   },
