@@ -26,4 +26,8 @@ export class TodoService {
     if (!todo) throw new Error('To Do not found');
     return this.repository.update(id, { completed: !todo.completed }) as Promise<Todo>;
   }
+
+  async update(id: number, data: Partial<Todo>): Promise<Todo | null> {
+    return this.repository.update(id, data);
+  }
 }

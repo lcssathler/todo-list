@@ -43,4 +43,15 @@ router.put('/:id/toggle', async (req, res) => {
   }
 });   
 
+router.put('/:id', async (req, res) => {   
+  try {
+    const id = parseInt(req.params.id, 10);
+    const data = req.body;
+    const todo = await todoService.update(id, data);
+    res.json(todo);
+  } catch (error: any) {  
+    res.status(500).json({ error: error.message });
+  }
+});
+
 export default router
