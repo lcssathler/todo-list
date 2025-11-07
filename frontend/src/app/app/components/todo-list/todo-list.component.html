@@ -1,28 +1,41 @@
-<div class="max-w-2xl mx-auto p-6">
-  <h1 class="text-3xl font-bold text-gray-800 mb-6">To Do List</h1>
+<div class="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-8 px-4">
+  <div class="max-w-2xl mx-auto">
+    
+    <h1 class="text-4xl font-bold text-center text-gray-800 mb-8">
+      To-Do List
+    </h1>
 
-  <app-todo-form (todoCreated)="loadTodos()"></app-todo-form>
+    <app-todo-form (todoCreated)="loadTodos()"></app-todo-form>
 
-  <ul class="mt-6 space-y-3">
-    <li *ngFor="let todo of todos" 
-        class="flex items-center justify-between p-4 bg-white rounded-lg shadow-sm border">
-      <div class="flex items-center space-x-3">
-        <input type="checkbox" 
-               [checked]="todo.completed" 
-               (change)="toggle(todo.id!)"
-               class="w-5 h-5 text-blue-600 rounded">
-        <span [class]="todo.completed ? 'line-through text-gray-500' : 'text-gray-800'">
-          {{ todo.title }}
-        </span>
+    <div class="space-y-3">
+      <div *ngFor="let todo of todos" class="fade-in"
+           class="group flex items-center justify-between p-4 bg-white rounded-xl shadow-sm border border-gray-200 hover:shadow-md transition-shadow">
+        
+        <div class="flex items-center space-x-3">
+          <input 
+            type="checkbox" 
+            [checked]="todo.completed" 
+            (change)="toggle(todo.id!)"
+            class="w-5 h-5 text-primary rounded focus:ring-primary cursor-pointer">
+          
+          <span [class]="todo.completed 
+            ? 'line-through text-gray-500' 
+            : 'text-gray-800 font-medium'">
+            {{ todo.title }}
+          </span>
+        </div>
+
+        <button 
+          (click)="delete(todo.id!)" 
+          class="opacity-0 group-hover:opacity-100 transition-opacity text-danger hover:text-danger/80 text-sm font-medium">
+          Delete
+        </button>
       </div>
-      <button (click)="delete(todo.id!)" 
-              class="text-red-500 hover:text-red-700 text-sm font-medium">
-        Delete
-      </button>
-    </li>
-  </ul>
+    </div>
 
-  <p *ngIf="todos.length === 0" class="text-gray-500 text-center mt-6">
-    To Do list empty. Add a new task!
-  </p>
+    <p *ngIf="todos.length === 0" 
+       class="text-center text-gray-500 mt-8 italic">
+      No tasks available. Add a new task
+    </p>
+  </div>
 </div>
