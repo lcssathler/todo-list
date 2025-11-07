@@ -1,7 +1,8 @@
 import { testConnection } from './src/database/connection.ts';
+import { testPrismaConnection } from './src/database/prisma.config.ts';
 
 const run = async () => {
-  const success = await testConnection();
+  const success = await testPrismaConnection();
   
   if (success) {
     console.log('DB connection ok');
