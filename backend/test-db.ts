@@ -1,4 +1,3 @@
-import { testConnection } from './src/database/connection.ts';
 import { testPrismaConnection } from './src/database/prisma.config.ts';
 
 const run = async () => {

@@ -16,3 +16,4 @@ export const testPrismaConnection = async () => {
 };
 
 export default prisma;
+export { prisma };
